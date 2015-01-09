@@ -5,7 +5,7 @@ test : morse array
 	./array
 	
 morse : morse.c
-	gcc -std=c99 morse.c -o morse
+	gcc -g -std=c99 morse.c -o morse
 	
 array: array.c
 	gcc -std=c99 array.c -o array
