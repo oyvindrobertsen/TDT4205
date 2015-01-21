@@ -1,5 +1,6 @@
 *.o
 
+results.html
 bin/*
 src/.directory
 testOutput/*
