@@ -75,14 +75,14 @@ NEW                     { RETURN_TOKEN(NEW); }
 {DIGIT}+                { RETURN_TOKEN(INT_CONST); }
 
     /* Floats */
-{DIGIT}+\.{DIGIT}+     { RETURN_TOKEN(FLOAT_CONST); }
+{DIGIT}+\.{DIGIT}+      { RETURN_TOKEN(FLOAT_CONST); }
 
     /* Boolean constants */
 TRUE                    { RETURN_TOKEN(TRUE_CONST); }
 FALSE                   { RETURN_TOKEN(FALSE_CONST); }
 
     /* Strings */
-\"(\\.|[^\\"])*\"       { RETURN_TOKEN(STRING_CONST); } /* Stolen shamelessly from ANSI C */
+\"(\\.|[^\\"^\n])*\"    { RETURN_TOKEN(STRING_CONST); } /* Stolen shamelessly from ANSI C, disallow \n */
 
     /* Identifiers */
 {ID}                    { RETURN_TOKEN(IDENTIFIER); }

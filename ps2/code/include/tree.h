@@ -27,7 +27,7 @@ typedef struct node_t {
     char *label;           			// Data label for variables
     expression_type_t expression_type;		// If this node is an expression, the kind of expression
     data_type_t data_type;			// The data type, only used for declarations,
-    						// the data type for variables is in the symbol table entry.
+    // the data type for variables is in the symbol table entry.
     int string_index;				// Index of string in string table
 
     symbol_t *entry;        			// Pointer to symbol table entry
@@ -36,7 +36,7 @@ typedef struct node_t {
 
     int n_children;    		                // Number of children
     struct node_t **children;    	        // Array of pointers to child nodes
-    
+
     struct node_t *(*simplify)( struct node_t*, int );		// This nodes simplify function
     struct node_t *(*optimize)( struct node_t* );		// Tree optimization
     int (*bind_names)( struct node_t*, int );			// This nodes bind_names function
@@ -45,11 +45,11 @@ typedef struct node_t {
 
     // The value of constant nodes
     union {
-    	int int_const;
-    	float float_const;
-    	char char_const;
-    	char* string_const;
-    	bool bool_const;
+        int int_const;
+        float float_const;
+        char char_const;
+        char* string_const;
+        bool bool_const;
     };
 } node_t;
 
@@ -58,11 +58,11 @@ typedef struct node_t {
  *  Function prototypes: implementations are found in tree.c
  */
 node_t * node_init ( nodetype_t type,
-		char* label,
-		base_data_type_t base_type,
-		expression_type_t expression_type,
-		int n_children,
-		va_list child_list );
+        char* label,
+        base_data_type_t base_type,
+        expression_type_t expression_type,
+        int n_children,
+        va_list child_list );
 void node_print ( FILE *output, node_t *root, int nesting );
 void node_print_entries ( FILE *output, node_t *root, int nesting );
 void node_finalize ( node_t *discard );
