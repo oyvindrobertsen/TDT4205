@@ -166,7 +166,7 @@ variable_list           : declaration_statement { $$ = CN(variable_list_n, 1, $1
                         ;
 
 expression_list         : expression { $$ = CN(expression_list_n, 1, $1); }
-                        | expression_list ',' expression { $$ = CN(expression_list_n, 2, $1, $3) }
+                        | expression_list ',' expression { $$ = CN(expression_list_n, 2, $1, $3); }
                         ;
 
 parameter_list          : variable_list { $$ = CN(parameter_list_n, 1, $1); }
