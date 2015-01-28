@@ -32,8 +32,7 @@ ID          [a-zA-Z][a-zA-Z0-9_]*
 FUNC                    { RETURN_TOKEN(FUNC); }
 PRINT                   { RETURN_TOKEN(PRINT); }
 RETURN                  { RETURN_TOKEN(RETURN); }
-CONTINUE                { RETURN_TOKEN(CONTINUE); }
-BREAK                   { RETURN_TOKEN(BREAK); }
+NEW                     { RETURN_TOKEN(NEW); }
 IF                      { RETURN_TOKEN(IF); }
 THEN                    { RETURN_TOKEN(THEN); }
 ELSE                    { RETURN_TOKEN(ELSE); }
@@ -45,14 +44,9 @@ TO                      { RETURN_TOKEN(TO); }
 INT                     { RETURN_TOKEN(INT); }
 BOOL                    { RETURN_TOKEN(BOOL); }
 FLOAT                   { RETURN_TOKEN(FLOAT); }
-CLASS                   { RETURN_TOKEN(CLASS_TOKEN); }
-HAS                     { RETURN_TOKEN(HAS); }
-WITH                    { RETURN_TOKEN(WITH); }
 START                   { RETURN_TOKEN(START); }
 VOID                    { RETURN_TOKEN(VOID); }
-THIS                    { RETURN_TOKEN(THIS); }
 ARRAY                   { RETURN_TOKEN(ARRAY); }
-NEW                     { RETURN_TOKEN(NEW); }
 
     /* Operators */
 ":="                    { RETURN_TOKEN(ASSIGN); }
@@ -69,7 +63,6 @@ NEW                     { RETURN_TOKEN(NEW); }
 "&&"                    { RETURN_TOKEN(AND); }
 "||"                    { RETURN_TOKEN(OR); }
 "!"                     { RETURN_TOKEN('!'); }
-"."                     { RETURN_TOKEN('.'); }
 
     /* Integers */
 {DIGIT}+                { RETURN_TOKEN(INT_CONST); }
