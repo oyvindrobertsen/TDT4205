@@ -5,3 +5,8 @@
 *.log
 *.out
 *.pdf
+*.dvi
+*.ps
+
+*.pyc
+*.swp

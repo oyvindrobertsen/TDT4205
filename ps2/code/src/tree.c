@@ -160,7 +160,7 @@ void node_finalize ( node_t *discard )
     if (discard != NULL) {
         free(discard->children);
         free(discard);
-    } 
+    }
 }
 
 
