@@ -1,0 +1,5 @@
+--- correctOutput/for_simple.s6	2015-01-26 10:54:44.000000000 +0100
++++ testOutput/for_simple.s6	2015-02-05 05:26:11.000000000 +0100
+@@ -1,2 +0,0 @@
+-CONSTANT
+-CONSTANT

@@ -1,0 +1,20 @@
+--- correctOutput/function_simple.s4	2015-01-26 10:30:32.000000000 +0100
++++ testOutput/function_simple.s4	2015-02-05 05:26:18.000000000 +0100
+@@ -1,17 +0,0 @@
+- Simplify FUNCTION_LIST 
+-  Simplify FUNCTION_LIST 
+-   Simplify FUNCTION 
+-    Simplify TYPE 
+-    Simplify STATEMENT_LIST 
+-     Simplify STATEMENT_LIST 
+-      Simplify STATEMENT 
+-        Simplify EXPRESSION_LIST 
+-         Simplify EXPRESSION (CONSTANT) 
+-     Simplify STATEMENT 
+-      Simplify EXPRESSION (FUNC_CALL) 
+-  Simplify FUNCTION 
+-   Simplify TYPE 
+-   Simplify STATEMENT_LIST 
+-    Simplify STATEMENT 
+-      Simplify EXPRESSION_LIST 
+-       Simplify EXPRESSION (CONSTANT) 
