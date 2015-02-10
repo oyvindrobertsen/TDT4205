@@ -1,9 +1,0 @@
---- correctOutput/minimal.s4	2015-01-26 10:30:32.000000000 +0100
-+++ testOutput/minimal.s4	2015-02-05 05:26:42.000000000 +0100
-@@ -1,6 +0,0 @@
-- Simplify FUNCTION_LIST 
--  Simplify FUNCTION 
--   Simplify TYPE 
--   Simplify STATEMENT_LIST 
--    Simplify STATEMENT 
--      Simplify EXPRESSION (CONSTANT) 

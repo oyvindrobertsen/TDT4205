@@ -77,5 +77,3 @@ void assignFunctionsToNodes ( node_t *root )
 			break;
 	}
 }
-
-

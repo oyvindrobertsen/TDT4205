@@ -2,35 +2,50 @@
 
 
 
-//For the sting table
+//For the string table
 static char **strings;
 static int strings_size = 16, strings_index = -1;
 
 extern int outputStage; // This variable is located in vslc.c
 
 
+void resize_table() {
+    strings_size = strings_size * 2;
+    strings = (char**) realloc(strings, strings_size * sizeof(char*));
+}
 
 
 void
 symtab_init ( void )
 {
-
-    
+    strings = malloc(sizeof(char*)*strings_size);
 }
 
 
 void
 symtab_finalize ( void )
 {
-
-    
+    for (int i = 0; i < strings_index; i++) {
+        free(strings[i]);
+    }
+    free(strings);
+    strings_index = -1;
+    strings_size = 16;
 }
 
 
 int
 strings_add ( char *str )
 {
-
+    strings_index++;
+    if (outputStage == 7) {
+        printf("Add strings (%s), index: %d \n", str, strings_index);
+    }
+    if (strings_index == strings_size) {
+        resize_table();
+    }
+    strings[strings_index] = str;
+    return strings_index;
 }
 
 
@@ -57,11 +72,6 @@ strings_output ( FILE *stream )
 	fputs ( ".globl main\n", stream );
 	fputs ( ".align	2\n", stream );
 }
-
-
-
-
-
 
 
 char* base_type_to_string(base_data_type_t bt){

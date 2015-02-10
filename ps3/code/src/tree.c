@@ -177,4 +177,3 @@ void destroy_subtree ( FILE *output, node_t *discard )
         }
     }
 }
-
