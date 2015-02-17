@@ -7,6 +7,8 @@
 *.pdf
 *.dvi
 *.ps
+*.bbl
+*.blg
 
 *.pyc
 *.swp
