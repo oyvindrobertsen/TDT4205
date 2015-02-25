@@ -23,8 +23,3 @@ int bind_constant ( node_t *root, int stackOffset)
     }
     return 0;
 }
-
-
-
-
-
