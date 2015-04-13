@@ -1,0 +1,166 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Journal Article
+% LaTeX Template
+% Version 1.3 (9/9/13)
+%
+% This template has been downloaded from:
+% http://www.LaTeXTemplates.com
+%
+% Original author:
+% Frits Wenneker (http://www.howtotex.com)
+%
+% License:
+% CC BY-NC-SA 3.0 (http://creativecommons.org/licenses/by-nc-sa/3.0/)
+%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%----------------------------------------------------------------------------------------
+%	PACKAGES AND OTHER DOCUMENT CONFIGURATIONS
+%----------------------------------------------------------------------------------------
+
+\documentclass[twoside]{article}
+
+\usepackage{etex}
+
+\usepackage{lipsum} % Package to generate dummy text throughout this template
+
+\usepackage[sc]{mathpazo} % Use the Palatino font
+\usepackage[T1]{fontenc} % Use 8-bit encoding that has 256 glyphs
+\usepackage[utf8]{inputenc}
+\linespread{1.05} % Line spacing - Palatino needs more space between lines
+\usepackage{microtype} % Slightly tweak font spacing for aesthetics
+\usepackage{amsmath}
+\usepackage{listings}
+
+\lstset{
+  basicstyle=\small,
+  breaklines=true
+}
+
+\usepackage[hmarginratio=1:1,top=32mm,columnsep=20pt]{geometry} % Document margins
+\usepackage{multicol} % Used for the two-column layout of the document
+\usepackage[hang, small,labelfont=bf,up,textfont=it,up]{caption} % Custom captions under/above floats in tables or figures
+\usepackage{booktabs} % Horizontal rules in tables
+\usepackage{float} % Required for tables and figures in the multi-column environment - they need to be placed in specific locations with the [H] (e.g. \begin{table}[H])
+\usepackage{hyperref} % For hyperlinks in the PDF
+\usepackage{multirow}
+
+\usepackage{syntax}
+\setlength{\grammarparsep}{5pt plus 1pt minus 1pt} % increase separation between rules
+\setlength{\grammarindent}{6em} % increase separation between LHS/RHS 
+
+\usepackage{lettrine} % The lettrine is the first enlarged letter at the beginning of the text
+\usepackage{paralist} % Used for the compactitem environment which makes bullet points with less space between them
+
+\usepackage{abstract} % Allows abstract customization
+\renewcommand{\abstractnamefont}{\normalfont\bfseries} % Set the "Abstract" text to bold
+\renewcommand{\abstracttextfont}{\normalfont\small\itshape} % Set the abstract itself to small italic text
+
+\usepackage{tikz}
+\usetikzlibrary{shapes.multipart}
+
+\newcommand{\rparen}{)}
+
+\usepackage{titlesec} % Allows customization of titles
+\renewcommand\thesection{\Roman{section}} % Roman numerals for the sections
+\renewcommand{\thesubsection}{\thesection\hspace{1mm}\alph{subsection}}
+\titleformat{\section}[block]{\large\scshape\centering}{\thesection}{1em}{} % Change the look of the section titles
+\titleformat{\subsection}[block]{\large}{\thesubsection\rparen}{1em}{} % Change the look of the section titles
+
+\usepackage{fancyhdr} % Headers and footers
+\pagestyle{fancy} % All pages have headers and footers
+\fancyhead{} % Blank out the default header
+\fancyfoot{} % Blank out the default footer
+\fancyhead[C]{TDT4205 Compilers $\bullet$ Assignment Six $\bullet$ \date{\today}} % Custom header text
+\fancyfoot[RO,LE]{\thepage} % Custom footer text
+
+%----------------------------------------------------------------------------------------
+%	TITLE SECTION
+%----------------------------------------------------------------------------------------
+
+\title{\vspace{-15mm}\fontsize{24pt}{10pt}\selectfont\textbf{Theory for Assignment Six}} % Article title
+
+\author{
+    \large
+    \textsc{Øyvind Robertsen} \\ % Your name
+    \normalsize Norwegian University of Science \& Technology \\ % Your institution
+    \normalsize \href{mailto:oyvinrob@stud.ntnu.no}{oyvinrob@stud.ntnu.no} % Your email address
+    \vspace{-5mm}
+}
+\date{}
+
+%----------------------------------------------------------------------------------------
+
+\begin{document}
+
+\maketitle % Insert title
+
+\thispagestyle{fancy} % All pages have headers and footers
+
+%----------------------------------------------------------------------------------------
+%	ABSTRACT
+%----------------------------------------------------------------------------------------
+
+%\begin{abstract}
+
+%\noindent \lipsum[1] % Dummy abstract text
+
+%\end{abstract}
+
+%----------------------------------------------------------------------------------------
+%	ARTICLE CONTENTS
+%----------------------------------------------------------------------------------------
+
+\begin{multicols}{2} % Two-column layout throughout the main article text
+
+    \section{Problem 1}
+
+    \subsection{Forward and backward data-flow analysis}
+
+    The distinction between forward and backwards data-flow analysis relates to the direction information flows throughout the analysis.
+    With forward analysis, the set that represents the possible program states that can occur after any given statement (the OUT set), is calculated in terms of the set that represents the possible program states that can occur before the same statement (the IN set).
+    With backward analysis, it's the other way around, with the IN set being calculated in terms of the OUT set.
+
+    Expressed slightly differently; forward analysis derives information about a point $p$ in the flow graph by looking at the preceeding instructions. Backward analysis looks at the subsequent instructions.
+
+ 
+    \subsection{Examples of data-flow analysis problems}
+
+    \subsubsection{Reaching definition}
+
+    Reaching definition determines where in the program a variable $x$ may have been defined at some point $p$ in the program flow.
+
+    Reaching definition facilitates, among other things, (simple) constant propagation and loop-invariant code motion.
+    It also allows us to detect variables that are used before definition.
+
+    \subsubsection{Live-variable analysis}
+
+    In live-variable analysis we wish to know for variable $x$ and point $p$ wether the value of $x$ at point $p$ can be used along some path in the flow graph starting at $p$.
+    Live-variable analysis is an example of a backward data-flow analysis.
+
+    This information provides the basis for several optimizations, e.g.: register allocation optimization, dead-code elimination and common subexpression elimination.
+
+    \subsection{Must vs. may}
+
+    Data-flow analyses may be categorized into so called may and must analyses.
+
+    A may-analysis describes a property that may hold in some executions of the program.
+    A must-analysis describes a property that must hold in all executions.
+
+\end{multicols}
+\newpage
+
+    \section{Problem 2}
+
+    \begin{table}[h]
+        \centering
+        \begin{tabular}{l|l|l|l|l}
+        ~   & $use$     & $def$    & $IN$        & $OUT$       \\ \hline
+        B1  & \{b\}     & \{c\}    & \{d, a, b\} & \{d, c, a\} \\
+        B2  & \{d\}     & \{c, b\} & \{d, a\}    & \{d, a\}    \\
+        B3  & \{c, a\}  & \{d, c\} & \{c, a\}    & \{d, a\}    \\
+        B4  & $\emptyset$ & \{b, c\} & \{d, a\}    & \{d, a, b\} \\
+        \end{tabular}
+        \end{table}
+    
+\end{document}
